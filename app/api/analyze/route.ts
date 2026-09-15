@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { BACKEND_URL } from '@/lib/config';
 
 export async function POST(req: Request) {
   try {
@@ -6,7 +7,7 @@ export async function POST(req: Request) {
     const { text } = body;
 
     // Route to the FastAPI Python Backend
-    const backendRes = await fetch("http://localhost:8000/api/analyze/text", {
+    const backendRes = await fetch(`${BACKEND_URL}/api/analyze/text`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

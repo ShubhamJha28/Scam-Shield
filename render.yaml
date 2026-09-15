@@ -9,7 +9,7 @@ services:
       - key: NODE_ENV
         value: production
       - key: NEXT_PUBLIC_API_URL
-        value: https://scamshield-backend.onrender.com
+        value: https://scam-shield-9w1h.onrender.com
 
   # 2. Python FastAPI Backend Deployment
   - type: web

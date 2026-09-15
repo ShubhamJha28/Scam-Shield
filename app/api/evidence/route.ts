@@ -1,8 +1,11 @@
 import { NextResponse } from 'next/server';
+import { BACKEND_URL } from '@/lib/config';
+
+export const dynamic = 'force-dynamic';
 
 export async function GET() {
   try {
-    const response = await fetch('http://localhost:8000/api/emergency/incidents', {
+    const response = await fetch(`${BACKEND_URL}/api/emergency/incidents`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

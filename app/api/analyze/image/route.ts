@@ -1,11 +1,12 @@
 import { NextResponse } from 'next/server';
+import { BACKEND_URL } from '@/lib/config';
 
 export async function POST(req: Request) {
   try {
     const formData = await req.formData();
     
     // Forward the formData to the Python backend
-    const response = await fetch('http://localhost:8000/api/analyze/image', {
+    const response = await fetch(`${BACKEND_URL}/api/analyze/image`, {
       method: 'POST',
       body: formData,
       // Note: Do not set Content-Type manually when passing FormData

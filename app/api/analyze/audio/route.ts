@@ -1,10 +1,11 @@
 import { NextResponse } from 'next/server';
+import { BACKEND_URL } from '@/lib/config';
 
 export async function POST(req: Request) {
   try {
     const formData = await req.formData();
     
-    const response = await fetch('http://localhost:8000/api/analyze/audio', {
+    const response = await fetch(`${BACKEND_URL}/api/analyze/audio`, {
       method: 'POST',
       body: formData
     });

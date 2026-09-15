@@ -1,11 +1,12 @@
 import { NextResponse } from 'next/server';
+import { BACKEND_URL } from '@/lib/config';
 
 export async function POST(req: Request) {
   try {
     const body = await req.json();
     
     // Forward the url to the Python backend
-    const response = await fetch('http://localhost:8000/api/analyze/url', {
+    const response = await fetch(`${BACKEND_URL}/api/analyze/url`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body)
