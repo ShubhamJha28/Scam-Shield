@@ -1,0 +1,27 @@
+import { NextResponse } from 'next/server';
+
+export async function POST(req: Request) {
+  try {
+    const body = await req.json();
+    
+    // Forward the url to the Python backend
+    const response = await fetch('http://localhost:8000/api/analyze/url', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
+
+    if (!response.ok) {
+      throw new Error(`Backend responded with status ${response.status}`);
+    }
+
+    const data = await response.json();
+    return NextResponse.json(data);
+  } catch (error) {
+    console.error('URL Proxy Error:', error);
+    return NextResponse.json(
+      { error: 'Failed to analyze URL' },
+      { status: 500 }
+    );
+  }
+}
